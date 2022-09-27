@@ -2,12 +2,14 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	"os"
+
+	"github.com/mp-12301/mock-ecommerce-api/shared/logger"
 )
 
 type config struct {
 	port int
-	env string
+	env  string
 }
 
 func main() {
@@ -15,9 +17,10 @@ func main() {
 
 	flag.IntVar(&cfg.port, "port", 4000, "API server port")
 	flag.StringVar(&cfg.env, "environment", "development", "Environment {development|staging|production}")
-	
+
 	flag.Parse()
-	fmt.Println(cfg)
 
+	logger := logger.New(os.Stdout)
 
+	logger.Print("hello world")
 }
